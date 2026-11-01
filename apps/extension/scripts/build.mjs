@@ -1,5 +1,7 @@
 // Builds the extension for a target browser and mode, then writes the final manifest.
-//   node scripts/build.mjs --target=chrome|firefox --mode=production|e2e|development
+//   node scripts/build.mjs --target=chrome|edge|firefox --mode=production|e2e|development
+// The Edge build is the Chromium build; it gets its own output folder and zip for the
+// Microsoft Edge Add-ons store.
 import { readFile, writeFile, readdir } from 'node:fs/promises';
 import { join, resolve } from 'node:path';
 import { build } from 'vite';
@@ -14,7 +16,7 @@ const args = Object.fromEntries(
 );
 const target = args.target ?? 'chrome';
 const mode = args.mode ?? 'production';
-if (!['chrome', 'firefox'].includes(target)) throw new Error(`Unknown target ${target}`);
+if (!['chrome', 'edge', 'firefox'].includes(target)) throw new Error(`Unknown target ${target}`);
 if (!['production', 'e2e', 'development'].includes(mode)) throw new Error(`Unknown mode ${mode}`);
 
 const outDir = resolve(appDir, 'dist', mode === 'production' ? target : `${target}-${mode}`);

@@ -8,4 +8,4 @@
 - CSV export (RFC 4180, UTF-8, optional BOM, delimiter choice, formula-injection protection).
 - Pro: visual element picker, presets with import/export, XLSX export, multi-page extraction (next/numbered/manual) with limits, delay, backoff, de-duplication and cancellation, advanced cleaning and column ordering.
 - Centralised entitlements; signed-token licence client with development mock provider; production licensing ships unconfigured until a server exists.
-- Unit, integration and Playwright end-to-end test suites; Chrome and Firefox builds; release packaging.
+- Unit, integration and Playwright end-to-end test suites (Chromium and Microsoft Edge); Chrome, Edge and Firefox builds; release packaging.

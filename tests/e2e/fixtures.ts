@@ -4,14 +4,19 @@ import { join, resolve } from 'node:path';
 import type { BrowserContext, Page, Worker } from '@playwright/test';
 import { test as base, chromium, expect } from '@playwright/test';
 
-export const EXTENSION_DIR = resolve(process.cwd(), 'apps/extension/dist/chrome-e2e');
+// SWDE_E2E_BROWSER=msedge runs the suite in installed Microsoft Edge against the Edge build.
+const BROWSER = process.env.SWDE_E2E_BROWSER === 'msedge' ? 'msedge' : 'chromium';
+export const EXTENSION_DIR = resolve(
+  process.cwd(),
+  BROWSER === 'msedge' ? 'apps/extension/dist/edge-e2e' : 'apps/extension/dist/chrome-e2e',
+);
 export const FIXTURES = 'http://127.0.0.1:4173';
 
 export async function launch(userDataDir: string): Promise<BrowserContext> {
   return chromium.launchPersistentContext(userDataDir, {
     // The "chromium" channel uses new headless mode, which supports extensions.
-    channel: 'chromium',
-    headless: true,
+    channel: BROWSER,
+    headless: process.env.SWDE_E2E_HEADED !== '1',
     acceptDownloads: true,
     viewport: { width: 1400, height: 900 },
     args: [`--disable-extensions-except=${EXTENSION_DIR}`, `--load-extension=${EXTENSION_DIR}`],

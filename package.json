@@ -23,11 +23,13 @@
     "test:watch": "vitest",
     "test:e2e": "pnpm build && pnpm build:e2e && playwright test",
     "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm build",
-    "package:firefox": "pnpm build:firefox && node scripts/package-zip.mjs firefox"
+    "package:firefox": "pnpm build:firefox && node scripts/package-zip.mjs firefox",
+    "build:edge": "pnpm --filter @swde/extension build:edge",
+    "package:edge": "pnpm build:edge && node scripts/package-zip.mjs edge"
   },
   "devDependencies": {
     "@eslint/js": "9.16.0",
-    "@playwright/test": "1.49.1",
+    "@playwright/test": "1.64.1",
     "@swde/extraction-core": "workspace:*",
     "@swde/licensing": "workspace:*",
     "@swde/shared": "workspace:*",

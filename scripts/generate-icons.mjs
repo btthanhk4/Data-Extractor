@@ -6,6 +6,8 @@ import { resolve } from 'node:path';
 import { deflateSync } from 'node:zlib';
 
 const OUT = resolve(import.meta.dirname, '../apps/extension/public/icons');
+// Store-only artwork (not bundled in the extension), e.g. the 300x300 Edge Add-ons logo.
+const STORE_OUT = resolve(import.meta.dirname, '../store-assets');
 const ACCENT = [13, 128, 118];
 const SIZES = [16, 32, 48, 128];
 
@@ -114,4 +116,10 @@ mkdirSync(OUT, { recursive: true });
 for (const size of SIZES) {
   writeFileSync(resolve(OUT, `icon-${size}.png`), png(size, render(size)));
   console.log(`icons/icon-${size}.png`);
+}
+
+mkdirSync(STORE_OUT, { recursive: true });
+for (const size of [128, 300]) {
+  writeFileSync(resolve(STORE_OUT, `logo-${size}.png`), png(size, render(size)));
+  console.log(`store-assets/logo-${size}.png`);
 }

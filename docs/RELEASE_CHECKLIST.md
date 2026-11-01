@@ -9,7 +9,7 @@
 - [ ] `apps/extension/dist/chrome/manifest.json` reviewed: MV3, permissions `activeTab`, `scripting`, `storage`; only optional host permissions; no `content_scripts`; CSP present.
 - [ ] Manual smoke test of the packaged build (`pnpm package`, load unpacked) on 3–5 real websites: a Wikipedia table, a product listing, a search results page, a directory, a site with pagination. Note any failures honestly in the listing's "Good to know".
 - [ ] Light and dark mode, keyboard navigation of popup and dashboard checked.
-- [ ] Edge: load the Chrome build in Edge and smoke test.
+- [ ] Edge: `pnpm package:edge`, run the E2E suite with `SWDE_E2E_BROWSER=msedge`, smoke test, then follow `docs/EDGE_LISTING.md`.
 - [ ] Firefox (if publishing there): `pnpm build:firefox`, load temporarily, smoke test; set a real `SWDE_GECKO_ID`.
 
 ## Licensing and payments (skip for a Free-only first release)

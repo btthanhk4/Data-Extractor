@@ -36,6 +36,7 @@ docs/                      Architecture, user guide, licensing backend, store li
 pnpm install
 pnpm dev            # development build -> apps/extension/dist/chrome-development (mock licensing)
 pnpm build          # production build  -> apps/extension/dist/chrome
+pnpm build:edge     # production build  -> apps/extension/dist/edge (Microsoft Edge Add-ons)
 pnpm build:firefox  # production build  -> apps/extension/dist/firefox
 pnpm typecheck
 pnpm lint
@@ -43,6 +44,7 @@ pnpm test           # unit + integration (Vitest, jsdom)
 pnpm test:e2e       # builds the e2e variant and runs Playwright with the real extension
 pnpm check          # typecheck + lint + test + build
 pnpm package        # production build + release/smart-web-data-extractor-<version>-chrome.zip
+pnpm package:edge   # same for the Edge Add-ons store (…-edge.zip)
 ```
 
 `pnpm icons` regenerates the PNG icons from the vector logo definition.
@@ -54,7 +56,7 @@ pnpm package        # production build + release/smart-web-data-extractor-<versi
 3. Click **Load unpacked** and select `apps/extension/dist/chrome` (or `dist/chrome-development`).
 4. Pin the extension, open any webpage and click the icon (or press <kbd>Alt</kbd>+<kbd>Shift</kbd>+<kbd>E</kbd>).
 
-Edge: same steps at `edge://extensions`. Firefox: `about:debugging` → _This Firefox_ → _Load Temporary Add-on_ → select `apps/extension/dist/firefox/manifest.json`. The Firefox build is produced and packaged but has not been verified by automated tests.
+Edge: same steps at `edge://extensions` with `apps/extension/dist/edge`. The E2E suite also runs in installed Microsoft Edge: `pnpm --filter @swde/extension build:e2e:edge && SWDE_E2E_BROWSER=msedge pnpm exec playwright test`. Firefox: `about:debugging` → _This Firefox_ → _Load Temporary Add-on_ → select `apps/extension/dist/firefox/manifest.json`. The Firefox build is produced and packaged but has not been verified by automated tests.
 
 ### Build modes
 
@@ -94,5 +96,6 @@ Development test keys: `SWDE-DEV-PRO` (valid), `SWDE-DEV-REVOKED`, `SWDE-DEV-LIM
 - [User guide](docs/USER_GUIDE.md)
 - [Licensing backend design](docs/LICENSING_BACKEND.md)
 - [Store listing & permission justifications](docs/STORE_LISTING.md)
+- [Microsoft Edge Add-ons listing](docs/EDGE_LISTING.md)
 - [Release checklist](docs/RELEASE_CHECKLIST.md)
 - [Privacy policy](PRIVACY.md) · [Security](SECURITY.md) · [Licence](LICENSE.md)

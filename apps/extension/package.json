@@ -8,7 +8,9 @@
     "build": "node scripts/build.mjs --target=chrome --mode=production",
     "build:firefox": "node scripts/build.mjs --target=firefox --mode=production",
     "build:e2e": "node scripts/build.mjs --target=chrome --mode=e2e",
-    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.node.json"
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.node.json",
+    "build:edge": "node scripts/build.mjs --target=edge --mode=production",
+    "build:e2e:edge": "node scripts/build.mjs --target=edge --mode=e2e"
   },
   "dependencies": {
     "@swde/extraction-core": "workspace:*",
