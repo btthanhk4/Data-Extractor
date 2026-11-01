@@ -1,0 +1,37 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Fixture: Dynamically inserted content</title></head>
+<body>
+  <h1>Live feed</h1>
+  <p id="status">Loading…</p>
+  <ul id="feed" class="feed"></ul>
+  <script>
+    // Items arrive after the initial load, like an XHR-driven page.
+    setTimeout(() => {
+      const feed = document.getElementById('feed');
+      const entries = [
+        ['Server restarted', 'ops', '2026-10-30T08:15:00Z'],
+        ['Deploy finished', 'ci', '2026-10-30T08:20:00Z'],
+        ['Cache warmed', 'ops', '2026-10-30T08:25:00Z'],
+        ['Alert resolved', 'oncall', '2026-10-30T08:40:00Z'],
+      ];
+      for (const [message, source, at] of entries) {
+        const li = document.createElement('li');
+        li.className = 'entry';
+        const m = document.createElement('span');
+        m.className = 'message';
+        m.textContent = message;
+        const s = document.createElement('span');
+        s.className = 'source';
+        s.textContent = source;
+        const t = document.createElement('time');
+        t.setAttribute('datetime', at);
+        t.textContent = at;
+        li.append(m, s, t);
+        feed.append(li);
+      }
+      document.getElementById('status').textContent = 'Loaded';
+    }, 400);
+  </script>
+</body>
+</html>

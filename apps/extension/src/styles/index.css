@@ -1,0 +1,83 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+/*
+ * Design tokens. Warm neutral greys with a single deep-teal accent; amber marks Pro.
+ * Values are RGB triplets so Tailwind opacity modifiers work (bg-accent/10).
+ */
+:root {
+  --bg: 250 250 249;
+  --surface: 255 255 255;
+  --sunken: 244 244 242;
+  --border: 228 228 224;
+  --fg: 24 24 27;
+  --muted: 82 82 91;
+  --subtle: 140 140 148;
+  --accent: 13 128 118;
+  --accent-fg: 255 255 255;
+  --accent-soft: 224 245 241;
+  --success: 22 128 61;
+  --warning: 180 108 9;
+  --danger: 200 40 40;
+  --pro: 196 120 12;
+  color-scheme: light;
+}
+
+:root.dark {
+  --bg: 14 15 17;
+  --surface: 22 24 27;
+  --sunken: 17 18 21;
+  --border: 41 44 49;
+  --fg: 236 236 238;
+  --muted: 168 168 176;
+  --subtle: 118 118 128;
+  --accent: 45 196 178;
+  --accent-fg: 6 30 28;
+  --accent-soft: 18 52 49;
+  --success: 74 200 120;
+  --warning: 234 170 60;
+  --danger: 244 98 98;
+  --pro: 240 176 70;
+  color-scheme: dark;
+}
+
+@layer base {
+  html,
+  body {
+    @apply bg-bg text-fg antialiased;
+    font-feature-settings: 'cv11', 'ss01';
+  }
+  body {
+    @apply font-sans text-[13px] leading-5;
+  }
+  body.popup {
+    width: 380px;
+    min-height: 480px;
+  }
+  :focus-visible {
+    @apply outline-none ring-2 ring-accent/60 ring-offset-1 ring-offset-bg;
+  }
+  ::selection {
+    @apply bg-accent/20;
+  }
+}
+
+@layer components {
+  .tabular {
+    font-variant-numeric: tabular-nums;
+  }
+  .scroll-thin {
+    scrollbar-width: thin;
+    scrollbar-color: rgb(var(--border)) transparent;
+  }
+}
+
+@media (prefers-reduced-motion: reduce) {
+  *,
+  *::before,
+  *::after {
+    animation-duration: 0.01ms !important;
+    transition-duration: 0.01ms !important;
+  }
+}

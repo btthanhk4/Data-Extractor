@@ -1,0 +1,16 @@
+<!doctype html>
+<html>
+<head><meta charset="utf-8"><title>Fixture: Malformed content</title></head>
+<body>
+<div class="list">
+  <div class="row"><span class="k">Alpha<span class="v">1</div>
+  <div class="row"><span class="k">Beta</span><span class="v">2</span><script>window.__pwned = 1</script></div>
+  <div class="row"><span class="k">Gamma</span><span class="v">3</span><a href="javascript:alert(1)">bad link</a></div>
+  <div class="row"><span class="k"><img src="x" onerror="window.__pwned=2">Delta</span><span class="v">4</span><a href="javascript:alert(1)">bad link</a></div>
+  <div class="row"><span class="k">Epsilon &lt;b&gt;not html&lt;/b&gt;</span><span class="v">5</span><a href="data:text/html,hi">data link</a></div>
+</div>
+<table><tr><td>orphan cell<td>no closing tags
+<tr><td>second<td>row
+</table>
+</body>
+</html>

@@ -1,0 +1,34 @@
+{
+  "name": "@swde/extension",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "scripts": {
+    "dev": "node scripts/build.mjs --target=chrome --mode=development",
+    "build": "node scripts/build.mjs --target=chrome --mode=production",
+    "build:firefox": "node scripts/build.mjs --target=firefox --mode=production",
+    "build:e2e": "node scripts/build.mjs --target=chrome --mode=e2e",
+    "typecheck": "tsc -p tsconfig.json && tsc -p tsconfig.node.json"
+  },
+  "dependencies": {
+    "@swde/extraction-core": "workspace:*",
+    "@swde/licensing": "workspace:*",
+    "@swde/shared": "workspace:*",
+    "lucide-react": "0.468.0",
+    "react": "18.3.1",
+    "react-dom": "18.3.1",
+    "zod": "3.23.8",
+    "zustand": "5.0.2"
+  },
+  "devDependencies": {
+    "@types/chrome": "0.0.287",
+    "@types/react": "18.3.12",
+    "@types/react-dom": "18.3.1",
+    "@vitejs/plugin-react": "4.3.4",
+    "autoprefixer": "10.4.20",
+    "postcss": "8.4.49",
+    "tailwindcss": "3.4.17",
+    "typescript": "5.6.3",
+    "vite": "5.4.11"
+  }
+}

@@ -1,0 +1,8 @@
+dist
+dist-*
+release
+coverage
+pnpm-lock.yaml
+playwright-report
+test-results
+tests/fixtures

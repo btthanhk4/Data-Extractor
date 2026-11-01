@@ -1,0 +1,51 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Fixture: Client-side pagination</title></head>
+<body>
+  <h1>Books</h1>
+  <div id="list" class="books"></div>
+  <div class="pager">
+    <button type="button" id="prev" class="pager-prev">Previous</button>
+    <span id="indicator"></span>
+    <button type="button" id="next" class="pager-next">Next page</button>
+  </div>
+  <script>
+    const PAGES = 3;
+    const PER_PAGE = 5;
+    let page = 1;
+    function render() {
+      const list = document.getElementById('list');
+      list.textContent = '';
+      for (let i = 0; i < PER_PAGE; i++) {
+        const n = (page - 1) * PER_PAGE + i + 1;
+        const card = document.createElement('div');
+        card.className = 'book';
+        const title = document.createElement('h4');
+        title.className = 'book-title';
+        title.textContent = 'Book number ' + n;
+        const author = document.createElement('span');
+        author.className = 'author';
+        author.textContent = 'Author ' + String.fromCharCode(64 + ((n % 26) || 26));
+        const price = document.createElement('span');
+        price.className = 'price';
+        price.textContent = '$' + (5 + n) + '.99';
+        card.append(title, author, price);
+        list.append(card);
+      }
+      document.getElementById('indicator').textContent = 'Page ' + page + ' of ' + PAGES;
+      const next = document.getElementById('next');
+      next.disabled = page >= PAGES;
+    }
+    document.getElementById('next').addEventListener('click', () => {
+      if (page < PAGES) {
+        // Simulate network latency before the new page renders.
+        setTimeout(() => { page += 1; render(); }, 300);
+      }
+    });
+    document.getElementById('prev').addEventListener('click', () => {
+      if (page > 1) { page -= 1; render(); }
+    });
+    render();
+  </script>
+</body>
+</html>

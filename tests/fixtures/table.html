@@ -1,0 +1,33 @@
+<!doctype html>
+<html lang="en">
+<head><meta charset="utf-8"><title>Fixture: Standard tables</title></head>
+<body>
+  <nav><ul><li><a href="/">Home</a></li><li><a href="/about">About</a></li><li><a href="/blog">Blog</a></li><li><a href="/contact">Contact</a></li></ul></nav>
+  <table role="presentation" class="layout"><tr><td>
+    <h1>Quarterly report</h1>
+  </td></tr></table>
+  <h2>Top cities by population</h2>
+  <table id="cities">
+    <caption>Largest cities</caption>
+    <thead>
+      <tr><th>Rank</th><th>City</th><th>Country</th><th>Population</th><th>Founded</th></tr>
+    </thead>
+    <tbody>
+      <tr><td>1</td><td><a href="/city/tokyo">Tokyo</a></td><td>Japan</td><td>37,400,068</td><td>1457-01-01</td></tr>
+      <tr><td>2</td><td><a href="/city/delhi">Delhi</a></td><td>India</td><td>28,514,000</td><td>1052-06-15</td></tr>
+      <tr><td>3</td><td><a href="/city/shanghai">Shanghai</a></td><td>China</td><td>25,582,000</td><td>1291-03-02</td></tr>
+      <tr><td>4</td><td><a href="/city/sao-paulo">São Paulo</a></td><td>Brazil</td><td>21,650,000</td><td>1554-01-25</td></tr>
+      <tr><td>5</td><td><a href="/city/hcmc">Thành phố Hồ Chí Minh</a></td><td>Việt Nam</td><td>9,000,000</td><td>1698-01-01</td></tr>
+    </tbody>
+    <tfoot><tr><td colspan="3">Total</td><td>122,146,068</td><td></td></tr></tfoot>
+  </table>
+  <h2>Opening hours</h2>
+  <table class="hours">
+    <tr><th>Day</th><th>Open</th><th>Close</th></tr>
+    <tr><td>Monday</td><td colspan="2">Closed</td></tr>
+    <tr><td>Tuesday</td><td>09:00</td><td>17:00</td></tr>
+    <tr><td rowspan="2">Weekend</td><td>10:00</td><td>14:00</td></tr>
+    <tr><td>11:00</td><td>15:00</td></tr>
+  </table>
+</body>
+</html>

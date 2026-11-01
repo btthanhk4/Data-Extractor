@@ -1,0 +1,16 @@
+{
+  "name": "@swde/extraction-core",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "exports": {
+    ".": "./src/index.ts"
+  },
+  "scripts": {
+    "typecheck": "tsc -p tsconfig.json"
+  },
+  "dependencies": {
+    "@swde/shared": "workspace:*",
+    "fflate": "0.8.2"
+  }
+}

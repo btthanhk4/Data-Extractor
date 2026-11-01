@@ -1,0 +1,47 @@
+{
+  "name": "smart-web-data-extractor",
+  "version": "1.0.0",
+  "private": true,
+  "type": "module",
+  "description": "Smart Web Data Extractor â€” local-first browser extension for extracting tables and lists from webpages.",
+  "packageManager": "pnpm@9.15.9",
+  "engines": {
+    "node": ">=20.10"
+  },
+  "scripts": {
+    "dev": "pnpm --filter @swde/extension dev",
+    "build": "pnpm --filter @swde/extension build",
+    "build:firefox": "pnpm --filter @swde/extension build:firefox",
+    "build:e2e": "pnpm --filter @swde/extension build:e2e",
+    "package": "pnpm build && node scripts/package-zip.mjs chrome",
+    "icons": "node scripts/generate-icons.mjs",
+    "typecheck": "pnpm -r typecheck && tsc -p tests/tsconfig.json",
+    "lint": "eslint .",
+    "format": "prettier --write .",
+    "format:check": "prettier --check .",
+    "test": "vitest run",
+    "test:watch": "vitest",
+    "test:e2e": "pnpm build && pnpm build:e2e && playwright test",
+    "check": "pnpm typecheck && pnpm lint && pnpm test && pnpm build",
+    "package:firefox": "pnpm build:firefox && node scripts/package-zip.mjs firefox"
+  },
+  "devDependencies": {
+    "@eslint/js": "9.16.0",
+    "@playwright/test": "1.49.1",
+    "@swde/extraction-core": "workspace:*",
+    "@swde/licensing": "workspace:*",
+    "@swde/shared": "workspace:*",
+    "@types/chrome": "0.0.287",
+    "@types/jsdom": "21.1.7",
+    "@types/node": "20.17.10",
+    "eslint": "9.16.0",
+    "eslint-plugin-react-hooks": "5.1.0",
+    "fflate": "0.8.2",
+    "globals": "15.13.0",
+    "jsdom": "25.0.1",
+    "prettier": "3.4.2",
+    "typescript": "5.6.3",
+    "typescript-eslint": "8.18.0",
+    "vitest": "2.1.8"
+  }
+}
